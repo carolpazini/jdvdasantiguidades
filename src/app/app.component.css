@@ -15,10 +15,11 @@
     height: 128px;
     border: 2px solid ;
     border-color: black;
-    text-align: left ;
+    text-align: center ;
     padding: 2px;
     float: left;
     cursor: pointer;
+
    
 }
 

@@ -22,25 +22,26 @@ export class AppComponent {
   Q7="";
   Q8="";
   Q9="";
+
+//determinando se é ankh ou horus
   constructor() {
-    // this.title1="ONE";
   }
   printZeroX(event) {
     console.log(this.GameOver);
     if (event.target.innerHTML === "" && !this.GameOver) {
       if (this.isZero) {
-        event.target.innerHTML = "X";
+        event.target.innerHTML = "☥";
       } else {
-        event.target.innerHTML = "0";
+        event.target.innerHTML = "𓂀";
       }
     }
     this.isZero = !this.isZero;
     this.PN=!this.PN;
-    this.PLAYERPRINT();
+    this.JOGADOR();
     return event.target.innerHTML;
 
   }
-  PLAYERPRINT(){
+  JOGADOR(){
    if(this.isZero){
      this.title1="ONE";
    }
