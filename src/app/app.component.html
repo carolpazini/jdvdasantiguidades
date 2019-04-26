@@ -1,0 +1,29 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Bem Vindo ao {{ title }}!
+  </h1>
+  
+  <div class="tabuleiro">
+ 
+    <!--primeira linha-->
+    <div><button class="bloco" (click)="a1($event)"></button></div>
+    <div><button class="bloco" (click)="a2($event)"></button></div>
+    <div><button class="bloco" (click)="a3($event)"></button></div>
+    
+    <!--segunda linha-->
+    <div><button class="bloco" (click)="b1($event)"></button></div>
+    <div><button class="bloco" (click)="b2($event)"></button></div>
+    <div><button class="bloco" (click)="b3($event)"></button></div>
+    <!--terceira linha-->
+    <div><button class="bloco" (click)="c1($event)"></button></div>
+    <div><button class="bloco" (click)="c2($event)"></button></div>
+    <div><button class="bloco" (click)="c3($event)"></button></div>
+
+     
+</div>
+  
+<h2 id="Ans" [innerHTML]="title2"></h2>
+<h1 id="Winp" [innerHTML]="title3"></h1>
+
+<router-outlet></router-outlet>
