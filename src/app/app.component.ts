@@ -24,4 +24,22 @@ export class AppComponent {
   c2="";
   c3="";
 
+  constructor() {
+    // this.title1="ONE";
+  }
+  printZeroX(event) {
+    console.log(this.GameOver);
+    if (event.target.innerHTML === "" && !this.GameOver) {
+      if (this.isZero) {
+        event.target.innerHTML = "☥";
+      } else {
+        event.target.innerHTML = "𓂀";
+      }
+    }
+    this.isZero = !this.isZero;
+    this.PN=!this.PN;
+    this.PLAYERPRINT();
+    return event.target.innerHTML;
+
+  }
 }
