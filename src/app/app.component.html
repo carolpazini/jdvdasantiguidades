@@ -1,5 +1,4 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div class="centralizador">
   <h1>
     Bem Vindo ao {{ title }}!
   </h1>
@@ -23,7 +22,11 @@
      
 </div>
   
-
-<h1 id="Winp" [innerHTML]="anuncioGanhador"></h1>
+<div class="margem centralizador">
+  <h3>Escolha entre um Ankh ou um Olho de Hórus</h3>
+  <h4>☥ ou 𓂀</h4>
+  <h2  [innerHTML]="anuncioGanhador"></h2>
+  <button class="botao" value="limpar" (click)="window.location.reload()">E lá vamos nós...</button>
+</div>
 
 <router-outlet></router-outlet>

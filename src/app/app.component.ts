@@ -10,7 +10,6 @@ export class AppComponent {
   title = 'Jogo das Antiguidades';
   turno = false;
   Finalizacao = false;
-  PN=false;
   chamada='';
   anuncioGanhador='';
 
@@ -26,7 +25,7 @@ export class AppComponent {
   Q9="";
 
 
-//determinando se é ankh ou horus
+//determinando se é ankh ou horus e as jogadas
   constructor() {
   }
   jogada(event) {
@@ -38,7 +37,6 @@ export class AppComponent {
       }
     }
     this.turno = !this.turno;
-    this.PN=!this.PN;
     this.JOGADOR();
     return event.target.innerHTML;
 
@@ -60,7 +58,7 @@ export class AppComponent {
     return true;
   }
 }
-
+//determinando as probabilidades
 mesmoValor(um, dois, tres) {
   if ((um == dois && um == tres)) {
     return true;
@@ -76,7 +74,7 @@ possibilidade(A, B, C){
     return false;
   }
 }
-//verifica as probabilidade
+//verifica as probabilidades
 verificaFinal(){
   if(this.Finalizacao){
      this.anuncioGanhador="Parece que alguém ganhou e quebrou a maldição!";
