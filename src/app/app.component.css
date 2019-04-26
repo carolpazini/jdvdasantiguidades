@@ -5,20 +5,22 @@
     float: left;
     background-color: bisque;
     margin: 10px ;
+    border: 2px solid ;
 
 }
 
 
 .bloco{
 
-    width: 128px;
-    height: 128px;
+    width: 136px;
+    height: 136px;
     border: 2px solid ;
     border-color: black;
     text-align: center ;
     padding: 2px;
     float: left;
     cursor: pointer;
+    font-size: 90px;
 
    
 }

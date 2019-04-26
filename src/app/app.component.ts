@@ -6,13 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
-  isZero = false;
-  GameOver = false;
-  title1='';
-  title2='';
-  title3='';
+
+  title = 'Jogo das Antiguidades';
+  turno = false;
+  Finalizacao = false;
   PN=false;
+  chamada='';
+  anuncioGanhador='';
+
+  //Q é de quadrado
   Q1="";
   Q2="";
   Q3="";
@@ -23,35 +25,35 @@ export class AppComponent {
   Q8="";
   Q9="";
 
+
 //determinando se é ankh ou horus
   constructor() {
   }
-  printZeroX(event) {
-    console.log(this.GameOver);
-    if (event.target.innerHTML === "" && !this.GameOver) {
-      if (this.isZero) {
+  jogada(event) {
+      if (event.target.innerHTML === "" && !this.Finalizacao) {
+      if (this.turno) {
         event.target.innerHTML = "☥";
       } else {
         event.target.innerHTML = "𓂀";
       }
     }
-    this.isZero = !this.isZero;
+    this.turno = !this.turno;
     this.PN=!this.PN;
     this.JOGADOR();
     return event.target.innerHTML;
 
   }
+
   JOGADOR(){
-   if(this.isZero){
-     this.title1="ONE";
+   if(this.turno){
+     this.chamada="ONE";
    }
    else{
-  this.title1="TWO";
+  this.chamada="TWO";
    }
-
   }
-isNotBlank(button) {
 
+  naoVazio(button) {
   if (button == "") {
     return false;
   } else {
@@ -59,102 +61,89 @@ isNotBlank(button) {
   }
 }
 
-isSameValue(one, two, three) {
-  if ((one == two && one == three)) {
+mesmoValor(um, dois, tres) {
+  if ((um == dois && um == tres)) {
     return true;
   } else {
     return false;
   }
 }
-isRow(A, B, C){
-  if (this.isNotBlank(A) && this.isNotBlank(B) && this.isNotBlank(C)) {
-   
-    if (this.isSameValue(A, B, C)) {
-
+possibilidade(A, B, C){
+  if (this.naoVazio(A) && this.naoVazio(B) && this.naoVazio(C)) {
+    if (this.mesmoValor(A, B, C)) {
       return true;
     }
-
     return false;
   }
 }
-isGAMEFINSISH(){
-  if(this.GameOver){
-    this.title2="GAME OVER";
-    this.title3="YOU WIN THIS GAME ! CONGRATS...";
+//verifica as probabilidade
+verificaFinal(){
+  if(this.Finalizacao){
+     this.anuncioGanhador="Parece que alguém ganhou e quebrou a maldição!";
   }
-  console.log(this.Q1 +"   "+this.Q2+"   "+this.Q3);
-  if (this.isRow(this.Q1, this.Q2, this.Q3)) {
-    
-    this.GameOver = true;
-
+  if (this.possibilidade(this.Q1, this.Q2, this.Q3)) {
+      this.Finalizacao = true;
   }
-  if (this.isRow(this.Q4, this.Q5, this.Q6)) {
-    this.GameOver = true;
-
+  if (this.possibilidade(this.Q4, this.Q5, this.Q6)) {
+      this.Finalizacao = true;
   }
-  if (this.isRow(this.Q7, this.Q8, this.Q9)) {
-    this.GameOver = true;
-
+  if (this.possibilidade(this.Q7, this.Q8, this.Q9)) {
+      this.Finalizacao = true;
   }
-  if (this.isRow(this.Q1, this.Q4, this.Q7)) {
-    this.GameOver = true;
-
+  if (this.possibilidade(this.Q1, this.Q4, this.Q7)) {
+      this.Finalizacao = true;
   }
-  if (this.isRow(this.Q2, this.Q5, this.Q8)) {
-    this.GameOver = true;
-
+  if (this.possibilidade(this.Q2, this.Q5, this.Q8)) {
+      this.Finalizacao = true;
   }
-  if (this.isRow(this.Q3, this.Q6, this.Q9)) {
-    this.GameOver = true;
-
+  if (this.possibilidade(this.Q3, this.Q6, this.Q9)) {
+      this.Finalizacao = true;
   }
-  if (this.isRow(this.Q1, this.Q5, this.Q9)) {
-    this.GameOver = true;
-
+  if (this.possibilidade(this.Q1, this.Q5, this.Q9)) {
+      this.Finalizacao = true;
   }
-  if (this.isRow(this.Q3, this.Q5, this.Q7)) {
-    this.GameOver = true;
-
+  if (this.possibilidade(this.Q3, this.Q5, this.Q7)) {
+      this.Finalizacao = true;
   }
 }
 
 // puxando o evento
-A1(event) {
-  this.Q1 = this.printZeroX(event);
-  this.isGAMEFINSISH();
-}
-A2(event) {
-  this.Q2 = this.printZeroX(event);
-  this.isGAMEFINSISH();
-} 
-A3(event) {
-  this.Q3 = this.printZeroX(event);
-  this.isGAMEFINSISH();
-} 
+  A1(event) {
+    this.Q1 = this.jogada(event);
+    this.verificaFinal();
+  }
+  A2(event) {
+    this.Q2 = this.jogada(event);
+    this.verificaFinal();
+  } 
+  A3(event) {
+    this.Q3 = this.jogada(event);
+    this.verificaFinal();
+  } 
 
-B1(event) {
-  this.Q4 = this.printZeroX(event);
-  this.isGAMEFINSISH();
-} 
-B2(event) {
-  this.Q5 = this.printZeroX(event);
-  this.isGAMEFINSISH();
-} 
-B3(event) {
-  this.Q6 = this.printZeroX(event);
-  this.isGAMEFINSISH();
-} 
+  B1(event) {
+    this.Q4 = this.jogada(event);
+    this.verificaFinal();
+  } 
+  B2(event) {
+    this.Q5 = this.jogada(event);
+    this.verificaFinal();
+  } 
+  B3(event) {
+    this.Q6 = this.jogada(event);
+    this.verificaFinal();
+  } 
 
-C1(event) {
-  this.Q7 = this.printZeroX(event);
-  this.isGAMEFINSISH();
-} 
-C2(event) {
-  this.Q8 = this.printZeroX(event);
-  this.isGAMEFINSISH();
-} 
-C3(event) {
-  this.Q9 = this.printZeroX(event);
-  this.isGAMEFINSISH();
-}
+  C1(event) {
+    this.Q7 = this.jogada(event);
+    this.verificaFinal();
+  } 
+  C2(event) {
+    this.Q8 = this.jogada(event);
+    this.verificaFinal();
+  } 
+  C3(event) {
+    this.Q9 = this.jogada(event);
+    this.verificaFinal();
+  }
 }
