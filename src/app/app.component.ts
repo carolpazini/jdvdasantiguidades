@@ -42,4 +42,36 @@ export class AppComponent {
     return event.target.innerHTML;
 
   }
+
+  PLAYERPRINT(){
+    if(this.isZero){
+      this.title1="ONE";
+    }
+    else{
+   this.title1="TWO";
+    }
+ 
+   }
+ isNotBlank(button) {
+ 
+   if (button == "") {
+     return false;
+   } else {
+     return true;
+   }
+ }
+
+ isRow(A, B, C){
+  if (this.isNotBlank(A) && this.isNotBlank(B) && this.isNotBlank(C)) {
+   
+    if (this.isSameValue(A, B, C)) {
+
+      return true;
+    }
+
+    return false;
+  }
+}
+
+
 }
